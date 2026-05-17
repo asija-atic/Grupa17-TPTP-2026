@@ -1,118 +1,372 @@
-<!DOCTYPE html lang="bs">
+<!DOCTYPE html>
+<html lang="bs">
 <head>
-<meta charset="UTF-8">
-<title>Kontakt</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt</title>
+  <style>
     #meni ul {
-        border-bottom: 1px solid #000000;
-        border-top: 1px solid #000000;
-        list-style: none;
-        padding: 35px 0;
-        text-align: center;
-        background-color: #000000;
+      border-bottom: 1px solid #000000;
+      border-top: 1px solid #000000;
+      list-style: outside none none;
+      padding: 35px 0;
+      text-align: center;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
+
     #meni ul li {
-        display: inline;
-        padding: 0 10px;
-        text-transform: uppercase;
+      display: inline;
+      padding: 0 10px;
+      text-transform: uppercase;
     }
+
+    #meni ul li:last-child {
+      margin-left: auto;
+    }
+
     #meni ul li a {
-        color: #ffffff;
-        text-decoration: none;
+      color: #ffffff;
+      text-decoration: none;
     }
+
     #meni ul li a:hover {
-        color: #b90c0c;
-        text-decoration: underline;
+      color: #b90c0c;
+      text-decoration: underline;
     }
+
+    #theme-toggle {
+      background: #b90c0c;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: auto;
+    }
+
+    #theme-toggle:hover {
+      background: #8a0808;
+    }
+
     body {
-        background-color: lightgrey;
+      background-color: lightgrey;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: black;
     }
-    .section {
-        max-width: 900px;
-        margin: 20px auto;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 6px;
+
+    header {
+      margin-top: 1.5rem;
     }
-    .section h2 {
-        margin-bottom: 10px;
+
+    header h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: black;
+      line-height: 1.1;
     }
-    .contact-box {
-        margin-bottom: 15px;
+
+    header p {
+      text-align: center;
+      font-size: 1rem;
+      color: #333;
     }
-    #faculty-list li {
-        margin-bottom: 10px;
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 20px;
     }
-</style>
+
+    .panel {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .panel h2 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .row {
+      display: grid;
+      gap: 5px;
+    }
+
+    .double-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    input.invalid,
+    select.invalid,
+    textarea.invalid {
+      border: 1px solid #c02828;
+      background-color: #fff3f3;
+    }
+
+    .error-message {
+      color: #c02828;
+      font-size: 0.9rem;
+      min-height: 1.1rem;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: #0f75bc;
+      color: #ffffff;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0a4d7a;
+    }
+
+    button[type="reset"] {
+      background-color: #e0e0e0;
+      color: #111111;
+    }
+
+    button[type="reset"]:hover {
+      background-color: #d0d0d0;
+    }
+
+    /* --- NOVI CSS STILOVI ZA POP-UP PROZOR (MODAL) --- */
+    #contact-success {
+      display: none; /* Sakriveno na pocetku */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Tamna prozirna pozadina preko cijelog ekrana */
+      justify-content: center;
+      align-items: center;
+      z-index: 10000; /* Osigurava da je prozor ispred svega */
+    }
+
+    .modal-sadrzaj {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 450px;
+      width: 90%;
+    }
+
+    #success-text {
+      font-size: 1.1rem;
+      color: #1f4d1f;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    #modal-zatvori-btn {
+      background-color: #0f75bc;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    #modal-zatvori-btn:hover {
+      background-color: #0a4d7a;
+    }
+    /* ------------------------------------------------- */
+
+    .info-grid {
+      display: grid;
+      gap: 15px;
+    }
+
+    .info-grid h3 {
+      margin: 10px 0 5px 0;
+    }
+
+    .info-grid ul {
+      list-style: outside none none;
+      padding: 0 0 0 20px;
+    }
+
+    .info-grid li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .double-row {
+        grid-template-columns: 1fr;
+      }
+
+      #meni ul {
+        padding: 15px 0;
+      }
+
+      #meni ul li {
+        padding: 0 5px;
+        font-size: 0.85rem;
+      }
+
+      #theme-toggle {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<body bgcolor="lightgrey">
-<div id="meni">
+<body>
+  <div id="meni">
     <ul>
-        <li><a style="color:#ffffff;" href="index.html">Početna</a></li>
-        <li><a style="color:#ffffff;" href="https://github.com/asija-atic/Grupa17-TPTP-2026">Naša grupa</a></li>
-        <li><a style="color:#ffffff;" href="kontakt.html">Kontakt</a></li>
+      <li><a style="color:#ffffff;" href="index.html">Početna</a></li>
+      <li><a style="color:#ffffff;" href="index.html#O nama">O nama</a></li>
+      <li><a style="color:#ffffff;" href="https://github.com/asija-atic/Grupa17-TPTP-2026">Naša grupa</a></li>
+      <li><a style="color:#ffffff;" href="sadrzaj.html">Sadržaj</a></li>
+      <li><a style="color:#ffffff;" href="kontakt.html">Kontakt</a></li>
+      <li><button id="theme-toggle" type="button">Tamni mod</button></li>
     </ul>
-</div>
+  </div>
+  <header>
+    <h1>Kontakt</h1>
+    <p>Pošaljite upit i dobijte pomoć za upis, skripte i studentski život.</p>
+  </header>
 
-<br><br>
-<div id="naslov">
-    <h1><center><font color="black" size="7">Kontakt</font></center></h1>
-</div>
-<br><br>
+  <main>
+    <section class="panel">
+      <h2>Kontakt forma</h2>
+      <form id="contact-form" novalidate>
+        <div class="double-row">
+          <div class="row">
+            <label for="ime">Ime</label>
+            <input id="ime" name="ime" type="text" aria-describedby="ime-error">
+            <span class="error-message" id="ime-error"></span>
+          </div>
+          <div class="row">
+            <label for="prezime">Prezime</label>
+            <input id="prezime" name="prezime" type="text" aria-describedby="prezime-error">
+            <span class="error-message" id="prezime-error"></span>
+          </div>
+        </div>
 
-<div class="section">
-    <h2><font size="5">Naši kontakti</font></h2>
-    <div class="contact-box">
-        <strong><font size="5">Asija Atić</font></strong>
-        <font size="5">Kreator web stranice</font><br>
-        <font size="5">Email: asija.atic@fet.ba</font>
-    </div>
-    <div class="contact-box">
-        <strong><font size="5">Asja Alić</font></strong>
-        <font size="5">Kreator web stranice</font><br>
-        <font size="5">Email: asja.alic@fet.ba</font>
-    </div>
-    <div class="contact-box">
-        <strong><font size="5">Avdan Hodžić</font></strong>
-        <font size="5">Kreator web stranice</font><br>
-        <font size="5">Email: avdan.hodzic@fet.ba</font>
-    </div>
-</div>
+        <div class="row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" aria-describedby="email-error">
+          <span class="error-message" id="email-error"></span>
+        </div>
 
-<div class="section">
-    <h2><font size="5">Skriptarnice Univerziteta u Tuzli</font></h2>
-    <div class="contact-box">
-        <strong><font size="5">Tehnološki fakultet</font></strong>
-        <font size="5">Adresa: Univerzitetska 8, Tuzla</font><br>
-        <font size="5">Kontakt: 035 320 740</font><br>
-        <font size="5">Radno vrijeme: Pon–Pet 08:00-14:30</font>
-    </div>
-    <div class="contact-box">
-        <strong><font size="5">Filozofski fakultet</font></strong>
-        <font size="5">Adresa: Dr. Tihomila Markovića 1, Tuzla</font><br>
-        <font size="5">Kontakt: 035 306 330</font><br>
-        <font size="5">Radno vrijeme: Pon–Pet 08:00-14:30</font>
-    </div>
-</div>
+        <div class="row">
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="telefon" type="tel" aria-describedby="telefon-error">
+          <span class="error-message" id="telefon-error"></span>
+        </div>
 
-<div class="section">
-    <h2><font size="5">Studentske službe fakulteta u Tuzli</font></h2>
-    <ul id="faculty-list">
-        <li><font size="5">Akademija dramskih umjetnosti - telefon: 00 387 (0)35 278 535</font></li>
-        <li><font size="5">Edukacijsko-rehabilitacijski fakultet - telefon: 00 387 (0)35 320 679</font></li>
-        <li><font size="5">Ekonomski fakultet - telefon: 00 387 (0)35 320 825, 320 823, 320 834</font></li>
-        <li><font size="5">Fakultet elektrotehnike - telefon: 00 387 (0)35 259 631</font></li>
-        <li><font size="5">Fakultet za tjelesni odgoj i sport - telefon: 00 387 (0)35 278 535</font></li>
-        <li><font size="5">Farmaceutski fakultet - telefon: 00 387 (0)35 320 998, 320 999</font></li>
-        <li><font size="5">Filozofski fakultet - telefon: 00 387 (0)35 306 342</font></li>
-        <li><font size="5">Mašinski fakultet - telefon: 00 387 (0)35 320 924</font></li>
-        <li><font size="5">Medicinski fakultet - telefon: 00 387 (0)35 320 625</font></li>
-        <li><font size="5">Pravni fakultet - telefon: 00 387 (0)35 250 658</font></li>
-        <li><font size="5">Prirodno-matematički fakultet - telefon: 00 387 (0)35 320 864</font></li>
-        <li><font size="5">Rudarsko-geološko-građevinski fakultet - telefon: 00 387 (0)35 320 560, 320 561</font></li>
-        <li><font size="5">Tehnološki fakultet - telefon: 00387 (0)35 320 746</font></li>
-    </ul>
-</div>
+        <div class="row">
+          <label for="tema">Tema upita</label>
+          <select id="tema" name="tema" aria-describedby="tema-error">
+            <option value="">-- Odaberite temu --</option>
+            <option value="upis">Upis</option>
+            <option value="knjige">Knjige i skripte</option>
+            <option value="smjestaj">Smještaj</option>
+            <option value="iskustva">Iskustva studenata</option>
+            <option value="drugo">Drugo</option>
+          </select>
+          <span class="error-message" id="tema-error"></span>
+        </div>
 
+        <div class="row">
+          <label for="poruka">Poruka</label>
+          <textarea id="poruka" name="poruka" rows="6" aria-describedby="poruka-error"></textarea>
+          <span class="error-message" id="poruka-error"></span>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Pošalji</button>
+          <button type="reset">Resetuj</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel info-grid">
+      <h2>Kontakt informacije</h2>
+      <div>
+        <h3>Naši kontakti</h3>
+        <ul>
+          <li><strong>Asija Atić:</strong> asija.atic@fet.ba</li>
+          <li><strong>Asja Alić:</strong> asja.alic@fet.ba</li>
+          <li><strong>Avdan Hodžić:</strong> avdan.hodzic@fet.ba</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Skriptnica</h3>
+        <p>Tehnološki fakultet, Univerzitetska 8, Tuzla</p>
+        <p>Radno vrijeme: Pon–Pet 08:00–14:30</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Grupa 17 - TPTP 2026
+  </footer>
+
+  <div id="contact-success">
+    <div class="modal-sadrzaj">
+      <p id="success-text"></p>
+      <button type="button" id="modal-zatvori-btn">OK</button>
+    </div>
+  </div>
+
+  <script src="js/tptpskripte.js"></script>
 </body>
 </html>

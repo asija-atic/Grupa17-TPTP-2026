@@ -13,6 +13,11 @@ list-style: outside none none;
 padding: 35px 0;
 text-align: center;
 background-color: #000000;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 20px;
+flex-wrap: wrap;
 }
 .meni ul li {
     border-spacing: "5px";
@@ -20,8 +25,26 @@ display: inline;
 padding: 0 10px;
 text-transform: uppercase;
 }
+
+.meni ul li:last-child {
+  margin-left: auto;
+}
+
+#theme-toggle {
+  background: #b90c0c;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#theme-toggle:hover {
+  background: #8a0808;
+}
 .meni ul li a {
-color: #000000;
+color: #ffffff;
 text-decoration: none;
 }
 .meni ul li a:hover {
@@ -41,8 +64,9 @@ text-decoration: underline;
 <li><a style="color:#ffffff;" href="#O nama">O nama</a></li>
 <li><a style="color:#ffffff;" href="#Savjeti">Savjeti</a></li>
 <li><a style="color:#ffffff;" href="https://github.com/asija-atic/Grupa17-TPTP-2026">Naša grupa</a></li>
-<li><a style="color:#ffffff;" href="sadrzaj.html">Sadržaj</a>
+<li><a style="color:#ffffff;" href="sadrzaj.html">Sadržaj</a></li>
 <li><a style="color:#ffffff;" href="kontakt.html">Kontakt</a></li>
+<li><button id="theme-toggle" type="button">Tamni mod</button></li>
 </ul>
 </div>
 </header>
