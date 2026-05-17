@@ -107,18 +107,51 @@ text-decoration: underline;
         </font>
     </a>
     
-    <font size="5">
-        <nav>
-            <ul></ul>
-            <li><a href="https://untz.ba/">Univerzitet u Tuzli</a></li>
-            <li><a href="FET.html">Fakultet elektrotehnike</a></li>
-            <li><a href="FET.html">Medicinski fakultet</a></li>
-            <li><a href="FET.html">Tehnološki fakultet</a></li>
-            <li><a href="FET.html">Filozofski fakultet</a></li>
-            <li><a href="FET.html">PMF</a></li>
-            </ul>
-        </nav>
-    </font>
+    
+        
+        <!-- Filter buttons and example cards -->
+        <section id="faculty-filters" style="padding:20px;background:transparent;">
+            <div id="filters" style="text-align:center;margin-bottom:12px;">
+                <button data-filter="all" class="filter-btn active" style="margin-right:8px;">Svi</button>
+                <button data-filter="FET" class="filter-btn" style="margin-right:8px;">FET</button>
+                <button data-filter="Medicinski" class="filter-btn" style="margin-right:8px;">Medicinski</button>
+                <button data-filter="Tehnoloski" class="filter-btn" style="margin-right:8px;">Tehnološki</button>
+                <button data-filter="Filozofski" class="filter-btn" style="margin-right:8px;">Filozofski</button>
+                <span style="margin-left:12px;">Prikazano: <span id="active-count">0</span></span>
+            </div>
+
+            <div class="cards" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+                <div class="card" data-category="FET" style="width:220px;border:1px solid #ccc;padding:10px;background:#fff;text-align:left;">
+                    <h3>Fakultet elektrotehnike</h3>
+                    <p>Informacije o smjerovima, prijemnom ispitu i kontaktima.</p>
+                    <a href="FET.html">Više</a>
+                </div>
+
+                <div class="card" data-category="Medicinski" style="width:220px;border:1px solid #ccc;padding:10px;background:#fff;text-align:left;">
+                    <h3>Medicinski fakultet</h3>
+                    <p>Podaci o studijima medicine i praksi.</p>
+                    <a href="Medicinski.html">Više</a>
+                </div>
+
+                <div class="card" data-category="Tehnoloski" style="width:220px;border:1px solid #ccc;padding:10px;background:#fff;text-align:left;">
+                    <h3>Tehnološki fakultet</h3>
+                    <p>Opis smjerova i korisni linkovi.</p>
+                    <a href="Tehnoloski.html">Više</a>
+                </div>
+
+                <div class="card" data-category="Filozofski" style="width:220px;border:1px solid #ccc;padding:10px;background:#fff;text-align:left;">
+                    <h3>Filozofski fakultet</h3>
+                    <p>Humanističke i društvene nauke.</p>
+                    <a href="Filozofski.html">Više</a>
+                </div>
+
+                <div class="card" data-category="PMF" style="width:220px;border:1px solid #ccc;padding:10px;background:#fff;text-align:left;">
+                    <h3>PMF</h3>
+                    <p>Prirodno-matematički fakultet - smjerovi i resursi.</p>
+                    <a href="PMF.html">Više</a>
+                </div>
+            </div>
+        </section>
 
         <br><br><br>
         <aside>
@@ -152,6 +185,9 @@ text-decoration: underline;
         <a href="https://www.instagram.com/adoo.hodziic/">Avdan</a>
         </font>
     </footer>
+</footer>
+
+<script src="js/tptpskripte.js"></script>
 
 </body>
 </html>
