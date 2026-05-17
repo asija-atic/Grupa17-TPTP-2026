@@ -30,6 +30,23 @@
 
     --transition:0.35s ease;
 }
+/*DARK MODE */
+
+body.dark-theme{
+
+    /* BOJE */
+    --primary-color:#0b1220;
+    --secondary-color:#111827;
+    --accent-color:#fca311;
+
+    --light-color:#0f172a;
+    --card-color:#1e293b;
+
+    --text-color:#e5e7eb;
+    --soft-text:#cbd5e1;
+
+    --hover-color:#ffba49;
+}
 
 /*RESET*/
 
@@ -67,6 +84,33 @@ Razumijem da:
 opacity kontroliše providnost,
 transform:translateY pomjera element po Y osi.
 */
+
+body.dark-theme{
+
+    background:#0b1220;
+    color:var(--text-color);
+}
+
+body.dark-theme .card,
+body.dark-theme table,
+body.dark-theme .section,
+body.dark-theme .pmf-upis,
+body.dark-theme .rggf-upis,
+body.dark-theme .smjerovi,
+body.dark-theme .tf-zanimljivosti,
+body.dark-theme .mas-tekst,
+body.dark-theme .fil-uvod{
+
+    background:#1e293b;
+    color:var(--text-color);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+body.dark-theme .meni ul,
+body.dark-theme #meni ul{
+
+    background:linear-gradient(to right,#0f172a,#111827);
+}
+
 
 @keyframes fadeIn{
 
