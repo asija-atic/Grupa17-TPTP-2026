@@ -12,15 +12,15 @@ function initThemeToggle() {
 
     var sacuvanaTema = localStorage.getItem('tptp-theme');
     if (sacuvanaTema === 'dark') {
-        document.body.classList.add('dark');
+        document.body.classList.add('dark-theme');
     }
 
     dugme.addEventListener('click', function() {
-        if (document.body.classList.contains('dark')) {
-            document.body.classList.remove('dark');
+        if (document.body.classList.contains('dark-theme')) {
+            document.body.classList.remove('dark-theme');
             localStorage.setItem('tptp-theme', 'light');
         } else {
-            document.body.classList.add('dark');
+            document.body.classList.add('dark-theme');
             localStorage.setItem('tptp-theme', 'dark'); 
         }
     });

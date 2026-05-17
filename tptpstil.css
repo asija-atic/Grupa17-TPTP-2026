@@ -74,7 +74,17 @@ body.dark-theme .rggf-upis,
 body.dark-theme .smjerovi,
 body.dark-theme .tf-zanimljivosti,
 body.dark-theme .mas-tekst,
-body.dark-theme .fil-uvod{
+body.dark-theme .fil-uvod,
+
+/* hero / fakultetske kartice */
+body.dark-theme .fet-card,
+body.dark-theme .med-card,
+body.dark-theme .tf-card,
+body.dark-theme .fil-card,
+body.dark-theme .pmf-card,
+body.dark-theme .eko-card,
+body.dark-theme .rggf-card,
+body.dark-theme .mas-card{
 
     background:#1e293b;
     color:var(--text-color);
@@ -84,6 +94,95 @@ body.dark-theme .meni ul,
 body.dark-theme #meni ul{
 
     background:linear-gradient(to right,#0f172a,#111827);
+}
+
+/* TAMNA TEMA - KONTRAST ZA KONTAKT/FUTER I DUGMAD */
+body.dark-theme .section{
+    background:rgba(30,41,59,0.95);
+    color:#e5e7eb;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+body.dark-theme footer{
+    background:linear-gradient(to right,var(--primary-color),var(--secondary-color));
+    color:#e5e7eb;
+}
+
+body.dark-theme button,
+body.dark-theme .filter-btn,
+body.dark-theme [data-href],
+body.dark-theme [data-scroll]{
+
+    color:#f8fafc;
+}
+
+/* Univerzalni “karton” izgled dugmadi */
+button,
+.filter-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 16px;
+    border-radius:12px;
+    border:2px solid rgba(20,33,61,0.15);
+
+    background:#ffffff;
+    color:var(--primary-color);
+
+    font-weight:700;
+    cursor:pointer;
+
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+}
+
+/* Filter dugmad - aktivno */
+.filter-btn{
+    padding:10px 14px;
+    border-color:rgba(20,33,61,0.25);
+    background:#ffffff;
+}
+
+.filter-btn.active{
+    background:var(--accent-color);
+    border-color:rgba(20,33,61,0.05);
+    color:#111827;
+}
+
+button:hover,
+.filter-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--strong-shadow);
+    background:var(--hover-color);
+    border-color:rgba(20,33,61,0.05);
+}
+
+/* Dugmad u tamnoj temi */
+body.dark-theme button,
+body.dark-theme .filter-btn{
+    background:#0f172a;
+    border-color:rgba(248,250,252,0.18);
+    color:#f8fafc;
+    box-shadow:0 10px 25px rgba(0,0,0,0.45);
+}
+
+body.dark-theme .filter-btn.active{
+    background:var(--accent-color);
+    color:#111827;
+}
+
+/* dugmad specifično koje koriste JS: */
+button[data-href],
+button[data-scroll]{
+    background:#ffffff;
+}
+
+body.dark-theme button[data-href],
+body.dark-theme button[data-scroll]{
+    background:#0f172a;
 }
 
 /*ANIMACIJA*/
