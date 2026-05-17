@@ -1,0 +1,1780 @@
+:root{
+
+    /* BOJE */
+
+    --primary-color:#14213d;
+    --secondary-color:#1f3c68;
+    --accent-color:#fca311;
+
+    --light-color:#f8fafc;
+    --card-color:#ffffff;
+
+    --text-color:#1e293b;
+    --soft-text:#22252c;
+
+    --hover-color:#ffba49;
+
+    /* FONT */
+
+    --main-font:'Segoe UI', sans-serif;
+
+    /* OSTALO */
+
+    --radius:18px;
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,0.08);
+
+    --strong-shadow:
+    0 12px 35px rgba(0,0,0,0.20);
+
+    --transition:0.35s ease;
+}
+
+/*RESET*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+
+body{
+
+    font-family:var(--main-font);
+
+    background:
+    linear-gradient(
+    135deg,
+    #eef2ff,
+    #f8fafc,
+    #dbeafe
+    );
+
+    color:var(--text-color);
+
+    line-height:1.7;
+
+    animation:fadeIn 1s ease;
+}
+
+body.dark-theme{
+
+    background:#0b1220;
+    color:var(--text-color);
+}
+
+body.dark-theme .card,
+body.dark-theme table,
+body.dark-theme .section,
+body.dark-theme .pmf-upis,
+body.dark-theme .rggf-upis,
+body.dark-theme .smjerovi,
+body.dark-theme .tf-zanimljivosti,
+body.dark-theme .mas-tekst,
+body.dark-theme .fil-uvod{
+
+    background:#1e293b;
+    color:var(--text-color);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+body.dark-theme .meni ul,
+body.dark-theme #meni ul{
+
+    background:linear-gradient(to right,#0f172a,#111827);
+}
+
+/*ANIMACIJA*/
+/* Fade-in animaciju sam napravila uz pomoć AI alata.
+Razumijem da:
+@keyframes definiše tok animacije,
+opacity kontroliše providnost,
+transform:translateY pomjera element po Y osi.
+*/
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/*NAVIGACIJA */
+/* 
+Flexbox navigaciju sam organizovala uz pomoć ChatGPT-a.
+Razumijem da:
+display:flex postavlja elemente u fleksibilni raspored,
+justify-content:center centrira elemente horizontalno,
+align-items:center centrira elemente vertikalno,
+gap dodaje razmak između stavki menija.
+*/
+
+.meni ul,
+#meni ul{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:35px;
+
+    list-style:none;
+
+    padding:24px;
+
+    background:
+    linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+    );
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+}
+
+.meni ul li a,
+#meni ul li a{
+
+    color:var(--light-color);
+
+    text-decoration:none;
+
+    text-transform:uppercase;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    position:relative;
+
+    transition:var(--transition);
+}
+
+.meni ul li a:hover,
+#meni ul li a:hover{
+
+    color:var(--accent-color);
+}
+
+.meni ul li a::after,
+#meni ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0%;
+
+    height:2px;
+
+    background-color:var(--accent-color);
+
+    transition:var(--transition);
+}
+
+.meni ul li a:hover::after,
+#meni ul li a:hover::after{
+
+    width:100%;
+}
+/* 
+CSS Grid raspored kartica sam napravila uz pomoć AI alata.
+Razumijem da:
+display:grid pravi mrežni raspored,
+repeat(4,1fr) pravi 4 jednake kolone,
+gap definiše razmak između kartica.
+*/
+
+/*NASLOVI */
+
+h1{
+
+    text-align:center;
+
+    font-size:48px;
+
+    margin-top:50px;
+    margin-bottom:25px;
+
+    color:var(--primary-color);
+
+    letter-spacing:1px;
+}
+
+h2{
+
+    color:var(--primary-color);
+
+    margin-bottom:15px;
+}
+
+/* PARAGRAFI */
+
+p{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:18px 25px;
+
+    font-size:18px;
+
+    color:var(--soft-text);
+}
+
+/* SLIKE*/
+
+img{
+
+    max-width:100%;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+}
+
+img:hover{
+
+    transform:scale(1.02);
+}
+
+/* TABELE */
+
+table{
+
+    width:90%;
+
+    margin:auto;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:var(--radius);
+
+    background:var(--card-color);
+
+    box-shadow:var(--shadow);
+}
+
+th{
+
+    background:
+    linear-gradient(
+    to right,
+    #681313,
+    #9e1313
+    );
+
+    color:white;
+
+    padding:16px;
+}
+
+td{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-bottom:1px solid #fecaca;
+
+    transition:var(--transition);
+}
+
+tr:nth-child(even){
+
+    background:#fef2f2;
+}
+
+tr:hover{
+
+    background:#fee2e2;
+}
+
+/* LISTE */
+
+ul,
+ol{
+
+    margin:20px 50px;
+}
+
+ul li{
+
+    margin-bottom:10px;
+}
+
+/* LINKOVI */
+
+a{
+
+    transition:var(--transition);
+}
+
+a:hover{
+
+    color:var(--accent-color);
+}
+
+a:focus{
+
+    outline:2px dashed var(--accent-color);
+
+    outline-offset:4px;
+}
+
+/*  IFRAME */
+
+iframe{
+
+    display:block;
+
+    margin:40px auto;
+
+    width:90%;
+    max-width:900px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+}
+
+/* FOOTER */
+
+footer{
+
+    margin-top:60px;
+
+    padding:35px;
+
+    text-align:center;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+    );
+}
+
+footer a{
+
+    color:white;
+
+    text-decoration:none;
+}
+
+/*  DODATNI BLOKOVI */
+
+#Opis,
+#Upis,
+#tekst,
+.Uvod,
+.smjerovi{
+
+    background:rgba(255,255,255,0.75);
+
+    padding:25px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    margin:20px;
+}
+
+/* HERO SEKCIJA */
+/*  ZAJEDNIČKA HERO KARTICA */
+
+.hero-card{
+
+    background-size:cover;
+
+    background-position:center;
+
+    height:220px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    margin:10px auto 40px auto;
+
+    max-width:1200px;
+
+    overflow:hidden;
+
+    padding:20px;
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
+}
+
+
+.hero-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+
+.hero-card h1{
+
+    color:#ffffff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    transition:0.3s ease;
+}
+
+.hero-section{
+
+    min-height:100vh;
+
+    background-image:
+    linear-gradient(
+    rgba(0,0,0,0.60),
+    rgba(0,0,0,0.60)
+    ),
+
+    url("Slike/studenti.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:30px;
+
+    margin-bottom:50px;
+}
+
+.hero-content{
+
+    max-width:900px;
+
+    animation:fadeIn 1.2s ease;
+
+    font-size:22px;
+
+    line-height:1.9;
+
+    color:#f1f5f9;
+
+    text-shadow:
+    0 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-content h1{
+
+    font-size:76px;
+
+    color:white;
+
+    margin-bottom:35px;
+
+    text-align:left;
+
+    line-height:1.1;
+
+    text-shadow:
+    0 5px 15px rgba(0,0,0,0.4);
+}
+
+.hero-content p{
+
+    font-size:22px;
+
+    line-height:1.9;
+
+    color:#f1f5f9;
+
+    padding:0;
+}
+
+.hero-content span{
+
+    color:var(--accent-color);
+
+    font-weight:bold;
+}
+
+/* FAKULTETI SEKCIJA */
+
+.fakulteti-section{
+
+    position:relative;
+
+    padding:70px 20px;
+
+    margin-top:60px;
+
+    overflow:hidden;
+}
+
+.fakulteti-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+    rgba(0,0,0,0.72),
+    rgba(0,0,0,0.72)
+    ),
+
+    url("Slike/fakulteti.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    filter:blur(5px);
+
+    transform:scale(1.05);
+
+    z-index:-2;
+}
+
+.fakulteti-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.20);
+
+    z-index:-1;
+}
+
+.fakulteti-section table{
+
+    position:relative;
+
+    z-index:5;
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+/* 
+Transform scale efekat na slikama sam napravila uz pomoć ChatGPT-a.
+Razumijem da:
+scale(1.03) blago povećava sliku kada korisnik pređe mišem preko nje.
+*/
+
+.fakulteti-section td{
+
+    background:rgba(255,255,255,0.88);
+
+    transition:0.4s ease;
+}
+
+.fakulteti-section td:hover{
+
+    transform:scale(1.03);
+
+    background:white;
+}
+
+.fakulteti-section img{
+
+    border-radius:18px;
+}
+
+.fakulteti-section img:hover{
+
+    transform:scale(1.05);
+}
+
+/* MAPA SEKCIJA */
+
+.mapa-sekcija{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:60px 40px;
+}
+
+.mapa-tekst{
+
+    flex:1;
+}
+
+.mapa-tekst p{
+
+    color:var(--text-color);
+
+    font-size:22px;
+
+    line-height:1.9;
+}
+
+.mapa{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:flex-end;
+}
+
+.mapa iframe{
+
+    width:100%;
+
+    max-width:700px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* MEDIA QUERIES */
+
+/* MOBITEL */
+
+@media(max-width:599px){
+
+    .meni ul,
+    #meni ul{
+
+        flex-direction:column;
+
+        gap:18px;
+    }
+
+    .grid-container{
+
+        grid-template-columns:1fr;
+
+        padding:20px;
+    }
+
+    h1{
+
+        font-size:30px;
+    }
+
+    p{
+
+        font-size:16px;
+    }
+
+    iframe{
+
+        height:250px;
+    }
+
+    table{
+
+        font-size:14px;
+    }
+}
+
+/* TABLET */
+/* 
+Responsive tablet prikaz sam napravila uz pomoć ChatGPT-a.
+Razumijem da:
+repeat(2,1fr) pravi dvije kolone na tablet uređajima.
+*/
+
+
+@media(min-width:600px) and (max-width:899px){
+
+    .grid-container{
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    h1{
+
+        font-size:38px;
+    }
+}
+
+/* MANJI EKRANI */
+
+@media(max-width:900px){
+
+    .mapa-sekcija{
+
+        flex-direction:column;
+    }
+
+    .mapa{
+
+        justify-content:center;
+    }
+}
+
+/* DESKTOP */
+
+@media(min-width:900px){
+
+    .grid-container{
+
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+/*SEKCIJE */
+
+.section{
+
+    background:rgba(255,255,255,0.8);
+
+    backdrop-filter:blur(8px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:var(--radius);
+
+    max-width:1200px;
+
+    margin:35px auto;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+}
+
+/*GRID KARTICE */
+
+.grid-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    padding:40px;
+}
+
+/*KARTICE */
+
+.card{
+
+    background:var(--card-color);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+    position:relative;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,0.15);
+}
+
+.card img{
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+    transition:0.5s;
+}
+
+.card:hover img{
+
+    transform:scale(1.08);
+}
+
+.card h3{
+
+    padding:18px;
+
+    color:var(--primary-color);
+
+    font-size:20px;
+}
+
+.card a{
+
+    text-decoration:none;
+}
+
+/* FET KARTICA */
+
+.fet-card{
+
+    background-image:
+    linear-gradient(
+    rgba(5,13,29,0.82),
+    rgba(23,34,66,0.82)
+    ),
+
+    url("Slike/fet.jpg");
+}
+
+.fet-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.fet-card h1{
+
+    color:#f1f5f9;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    padding:20px;
+
+    transition:0.3s ease;
+}
+
+.fet-card a{
+
+    text-decoration:none;
+}
+
+.fet-card:hover h1{
+
+    color:#ffffff;
+}
+
+/* MEDICINSKI KARTICA */
+
+.med-card{
+
+    background-image:
+    linear-gradient(
+    rgba(255, 64, 230, 0.295),
+    rgba(172, 108, 140, 0.7)
+    ),
+
+    url("Slike/medicinski.png");
+}
+
+.med-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.med-card h1{
+
+    color:#ffffff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    padding:20px;
+
+    transition:0.3s ease;
+}
+
+.med-card a{
+
+    text-decoration:none;
+}
+
+.med-card:hover h1{
+
+    color:#ffe5e5;
+}
+/* MEDICINSKI SLIKE */
+
+.med-slike{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    flex-wrap:wrap;
+
+    margin:50px auto;
+}
+
+.med-slike img{
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.18);
+
+    transition:0.4s ease;
+}
+
+.med-slike img:hover{
+
+    transform:scale(1.03);
+}
+/*PMF KARTICA */
+
+.pmf-card{
+
+    background-image:
+    linear-gradient(
+    rgba(44, 62, 80, 0.78),
+    rgba(52, 152, 219, 0.397)
+    ),
+
+    url("Slike/pmf.png");
+}
+
+.pmf-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.pmf-card h1{
+
+    color:#ffffff;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    padding:20px;
+
+    transition:0.3s ease;
+}
+
+.pmf-card a{
+
+    text-decoration:none;
+}
+
+.pmf-card:hover h1{
+
+    color:#d1fae5;
+}
+
+/*PMF UPIS SEKCIJA */
+
+.pmf-upis{
+
+    max-width:1100px;
+
+    margin:60px auto;
+
+    padding:10px;
+
+    background:
+    rgba(164, 183, 245, 0.295);
+
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.37);
+
+    text-align:center;
+}
+
+/* PMF PARAGRAFI */
+
+.pmf-upis p{
+
+    max-width:950px;
+
+    margin:0 auto 25px auto;
+
+    text-align:center;
+
+    font-size:19px;
+
+    line-height:1.9;
+}
+
+/* PMF LISTE */
+
+.pmf-upis ul{
+
+    max-width:850px;
+
+    margin:25px auto;
+
+    padding-left:25px;
+
+    text-align:left;
+}
+
+.pmf-upis li{
+
+    margin-bottom:14px;
+
+    line-height:1.8;
+
+    color:var(--soft-text);
+
+    font-size:18px;
+}
+
+/* PMF LINK */
+
+.pmf-upis a{
+
+    color:var(--primary-color);
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:0.3s ease;
+}
+
+.pmf-upis a:hover{
+
+    color:var(--accent-color);
+}
+
+/* PMF SLIKE */
+
+.pmf-slike{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin:20px auto;
+}
+
+.pmf-slike img{
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.18);
+
+    transition:0.4s ease;
+}
+
+.pmf-slike img:hover{
+
+    transform:scale(1.03);
+}
+
+/* EKONOMSKI KARTICA */
+
+.eko-card{
+
+    background-image:
+    linear-gradient(
+    #85202075,
+    rgba(219, 52, 52, 0.322)
+    ),
+
+    url("Slike/ekonomski.png");
+}
+
+.eko-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.308);
+}
+
+.eko-card h1{
+
+    color:#ffffff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    transition:0.3s ease;
+}
+
+.eko-card:hover h1{
+
+    color:#ca8b8b;
+}
+
+/* RGGF HERO KARTICA*/
+
+.rggf-card{
+
+    background-image:
+    linear-gradient(
+    rgba(40,40,40,0.70),
+    rgba(90,90,90,0.45)
+    ),
+
+    url("Slike/rggf.png");
+}
+
+.rggf-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.rggf-card h1{
+
+    color:#ffffff;
+
+    font-size:50px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    transition:0.3s ease;
+}
+
+.rggf-card:hover h1{
+
+    color:#e5e5e5;
+}
+
+/*RGGF CONTAINER */
+
+.rggf-container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.rggf-container p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    margin-bottom:30px;
+}
+
+/* RGGF SEKCIJE*/
+
+.rggf-upis,
+.smjerovi{
+
+    background:
+    rgba(255,255,255,0.80);
+
+    padding:35px;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+
+    margin:40px auto;
+}
+
+.rggf-upis ul,
+.smjerovi ul{
+
+    max-width:900px;
+
+    margin:25px auto;
+
+    text-align:left;
+
+    padding-left:20px;
+}
+
+.rggf-upis li,
+.smjerovi li{
+
+    margin-bottom:15px;
+
+    line-height:1.8;
+
+    font-size:18px;
+}
+
+/* RGGF SLIKE */
+
+.rggf-slike{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin:50px auto;
+}
+
+.rggf-slike div{
+
+    text-align:center;
+}
+
+.rggf-slike img{
+
+    width:500px;
+
+    max-width:100%;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.18);
+
+    transition:0.4s ease;
+}
+
+.rggf-slike img:hover{
+
+    transform:scale(1.03);
+}
+
+.rggf-slike figcaption{
+
+    margin-top:12px;
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+/*TEHNOLOSKI KARTICA */
+
+.tf-card{
+
+    background-image:
+    linear-gradient(
+    rgba(0, 77, 64, 0.75),
+    rgba(38, 166, 154, 0.45)
+    ),
+
+    url("Slike/tehnoloski.png");
+}
+
+.tf-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.tf-card h1{
+
+    color:#ffffff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    transition:0.3s ease;
+}
+
+.tf-card:hover h1{
+
+    color:#d1fae5;
+}
+
+/* TEHNOLOSKI SEKCIJE */
+
+.Uvod{
+
+    max-width:1600px;
+
+    margin:40px auto;
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+}
+
+.Uvod p{
+    text-align: center;
+    font-size:20px;
+
+    line-height:1.9;
+}
+
+/*TEHNOLOSKI SLIKE */
+
+.slike{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin:50px auto;
+}
+
+.slike img{
+
+    width:500px;
+
+    max-width:100%;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.18);
+
+    transition:0.4s ease;
+}
+
+.slike img:hover{
+
+    transform:scale(1.03);
+}
+
+/* TEHNOLOSKI DONJE SLIKE */
+
+.tf-lab{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+    margin:50px auto;
+}
+
+.tf-lab img{
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.18);
+
+    transition:0.4s ease;
+}
+
+.tf-lab img:hover{
+
+    transform:scale(1.03);
+}
+
+/* TEHNOLOSKI ZANIMLJIVOSTI*/
+
+.tf-zanimljivosti{
+
+    max-width:1200px;
+
+    margin:50px auto;
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+}
+
+.tf-zanimljivosti p{
+
+    font-size:20px;
+
+    line-height:1.9;
+}
+
+.tf-zanimljivosti ul{
+
+    max-width:950px;
+
+    margin:25px auto;
+
+    text-align:left;
+}
+
+.tf-zanimljivosti li{
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+    line-height:1.8;
+}
+
+/*FILOZOFSKI KARTICA */
+
+.fil-card{
+
+    background-image:
+    linear-gradient(
+    rgba(45, 27, 105, 0.75),
+    rgba(93, 63, 211, 0.137)
+    ),
+
+    url("Slike/filozofski.png");
+}
+
+.fil-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.fil-card h1{
+
+    color:#ffffff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    transition:0.3s ease;
+}
+
+.fil-card:hover h1{
+
+    color:#e9d5ff;
+}
+/* FILOZOFSKI UVOD */
+
+.fil-uvod{
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+}
+
+.fil-uvod p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    text-align: left;
+}
+
+/* MAŠINSKI KARTICA*/
+
+.mas-card{
+
+    background-image:
+    linear-gradient(
+    rgba(36, 36, 36, 0.78),
+    rgba(90, 90, 90, 0.35)
+    ),
+
+    url("Slike/masinski.png");
+}
+
+.mas-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+}
+
+.mas-card h1{
+
+    color:#ffffff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+
+    transition:0.3s ease;
+}
+
+.mas-card:hover h1{
+
+    color:#cc2d2dd8;
+}
+
+/* MAŠINSKI UVOD */
+
+.mas-uvod{
+
+    max-width:1250px;
+
+    margin:40px auto;
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+}
+
+.mas-uvod p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    text-align:center;
+}
+
+/* MAŠINSKI SLIKE */
+
+.mas-slike{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin:50px auto;
+}
+
+.mas-slike div{
+
+    text-align:center;
+}
+
+.mas-slike img{
+
+    width:450px;
+
+    max-width:100%;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.18);
+
+    transition:0.4s ease;
+}
+
+.mas-slike img:hover{
+
+    transform:scale(1.03);
+}
+
+.mas-slike figcaption{
+
+    margin-top:12px;
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+/*MAŠINSKI TEKST SEKCIJA */
+
+.mas-tekst{
+
+    max-width:1200px;
+
+    margin:50px auto;
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+}
+
+.mas-tekst p{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    text-align:center;
+}
+
+/* MAŠINSKI TABELA */
+
+.mas-tabela{
+
+    max-width:1300px;
+
+    margin:50px auto;
+
+    padding:30px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+}
